@@ -1,4 +1,4 @@
-var Gate = require('support/gate');
+var Gate = require('./../../node_modules/support/gate');
 var NE = require('nuby-express');
 var util = require('util');
 var _DEBUG = false;
