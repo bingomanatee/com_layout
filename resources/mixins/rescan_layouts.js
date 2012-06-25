@@ -1,7 +1,10 @@
-var Gate = require('./../../node_modules/support/gate');
 var NE = require('nuby-express');
 var util = require('util');
 var _DEBUG = false;
+var Layout = require('./../../node_modules/Layout');
+var Gate = NE.deps.support.Gate;
+
+console.log(' >>>>> Layout: %s', util.inspect(Layout, true, 0));
 
 module.exports = {
     init:function (frame, cb) {
@@ -13,7 +16,7 @@ module.exports = {
             re:/(.*)/,
             execute:function (props, callback) {
                 if (_DEBUG)   console.log('making layout over %s', props.full_path);
-                var layout_res = new NE.Layout({
+                var layout_res = new Layout({
                     path:props.full_path
                 });
                 if (_DEBUG)   console.log('adding layout %s', util.inspect(layout_res, true, 0));
