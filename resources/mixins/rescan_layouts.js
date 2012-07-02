@@ -4,8 +4,6 @@ var _DEBUG = false;
 var Layout = require('./../../node_modules/Layout');
 var Gate = NE.deps.support.Gate;
 
-console.log(' >>>>> Layout: %s', util.inspect(Layout, true, 0));
-
 module.exports = {
     init:function (frame, cb) {
         if (_DEBUG) console.log('rescanning for frame %s', frame.id());
