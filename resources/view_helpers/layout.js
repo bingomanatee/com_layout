@@ -36,7 +36,7 @@ var _layout_view = new NE.helpers.View({
 
             if (ln != 'NO LAYOUT') {
                 if (_DEBUG) {
-                    console.log('found layout %s for %s', ln, rs.req.url)
+ // console.log('found layout %s for %s', ln, rs.req.url)
                 }
 
                 if (ln) {
@@ -48,7 +48,7 @@ var _layout_view = new NE.helpers.View({
         }
 
        if (_DEBUG){
-           console.log('PATH: %s, LAYOUT: %s <<<<<<<<<', rs.req.url, input.layout);
+ // console.log('PATH: %s, LAYOUT: %s <<<<<<<<<', rs.req.url, input.layout);
        }
 
         cb(null, this.name);
