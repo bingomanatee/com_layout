@@ -1,21 +1,10 @@
 var NE = require('nuby-express');
 var util = require('util');
 var _ = require('underscore');
-var _s = require('underscore.string');
-
-var each_msg = '<% md.messages.forEach(function(msg){ %>' +
-    '<li><%= msg %></li>' +
-    '<% }) %>';
-var foreach = '<% messages.forEach(function(md) { %>' +
-    '<div class="alert <%= md.type %>_msg"><strong><%=  md.type %>:</strong>' +
-    '<ul>' + each_msg + '</ul></div><% }) %>';
-var content = '<% if (count > 0) { %>' +
-    '<div class="flash_messages">' +
-    foreach +
-    '</div><% } else { %><!-- no messages --><% } %>';
-
-//console.log('flash template: %s,', content);
-var _template = _.template(content);
+var fs = require('fs');
+var _template_content;
+var _template;
+var ejs = require('ejs');
 
 var _msg_types =['info', 'error', 'warning'];
 
@@ -54,7 +43,16 @@ var _flash_view_helper = new NE.helpers.View( {
         input.helpers.flash = function(){
              return _render(rs);
         }
-        cb(null, this.name);
+
+        if (_template_content){
+            cb(null, input);
+        } else {
+            fs.readFile(__dirname + '/flash.html', 'utf8', function(err, c){
+                _template_content = c;
+                _template = ejs.compile(c);
+                cb(null, input);
+            })
+        }
     }
 
 });
