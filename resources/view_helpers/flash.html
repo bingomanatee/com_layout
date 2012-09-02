@@ -2,11 +2,9 @@
 <div class="flash_messages">
     <% messages.forEach(function(md) { %>
     <div class="alert <%= md.type %>_msg"><strong><%= md.type %>:</strong>
-        <ul>
-            <% md.messages.forEach(function(msg){ %>
-            <li><%- msg %></li>
-            <% }) %>
-        </ul>
+
+            <%- md.messages.join('</br>') %>
+
     </div>
     <% }) %>
 </div><% } else { %><!-- no messages --><% } %>
