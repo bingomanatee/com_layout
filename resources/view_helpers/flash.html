@@ -1,7 +1,7 @@
 <% if (count > 0) { %>
 <div class="flash_messages">
     <% messages.forEach(function(md) { %>
-    <div class="alert <%= md.type %>_msg"><strong><%= md.type %>:</strong>
+    <div class="alert alert-<%= md.type %>"><strong><%= md.type %>:</strong>
 
             <%- md.messages.join('</br>') %>
 
