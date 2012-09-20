@@ -37,6 +37,15 @@ var _flash_view_helper = new NE.helpers.View( {
     name: 'flash',
 
     init: function(rs, input, cb){
+        /**
+         * Transferring form/querystring props to flash messages
+         */
+        _msg_types.forEach(function(mt){
+            if (rs.req_props['flash_' + mt]){
+                rs.flash(mt, rs.req_props['flash_' + mt]);
+            }
+        });
+
         if (!input.hasOwnProperty('helpers')){
             input.helpers = {};
         }
@@ -44,11 +53,10 @@ var _flash_view_helper = new NE.helpers.View( {
              return _render(rs);
         }
 
-        if (_template_content){
+        if (_template){
             cb(null, input);
         } else {
             fs.readFile(__dirname + '/flash.html', 'utf8', function(err, c){
-                _template_content = c;
                 _template = ejs.compile(c);
                 cb(null, input);
             })
