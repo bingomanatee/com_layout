@@ -12,7 +12,7 @@ var _layout_view = new NE.helpers.View({
             var layout_options = false;
 
             function _fetch_layout(key) {
-                if (key == false) {
+                if (!key) {
                     input.layout = false;
                 } else {
                     //   console.log('desiring layout %s', key);
@@ -25,8 +25,7 @@ var _layout_view = new NE.helpers.View({
                             layout.resource_read = true;
                         }
 
-                        if (_DEBUG) console.log('found layout %s: template = %s, path = %s'
-                            , key, layout.template, rs.req.url);
+                        if (_DEBUG) console.log('found layout %s: template = %s, path = %s', key, layout.template, rs.req.url);
                         input.layout = layout.template;
                         layout_options = layout.config.options;
                     }
@@ -87,16 +86,13 @@ var _layout_view = new NE.helpers.View({
 
 
             } else {
-                if (_DEBUG_OPTIONS) {
-                    console.log('NOT setting debug options - no layout')
-                }
+                if (_DEBUG_OPTIONS)   console.log('NOT setting debug options - no layout')
                 cb(null, input);
             }
 
         }
 
-    })
-    ;
+    });
 
 module.exports = function () {
     return _layout_view;

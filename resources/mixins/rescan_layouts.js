@@ -18,7 +18,7 @@ module.exports = {
             gate.task_done()
         }
 
-        frame.get_controllers().forEach(function (con) {
+        frame.frame_controllers().forEach(function (con) {
             var layout_dir_handler = Layout_Dir_Handler_factory();
             gate.task_start();
             con.reload([layout_dir_handler], _after_load, frame);
