@@ -81,7 +81,7 @@ var _layout_view = new NE.helpers.View({
                 if (site_options) {
                     _package_layout_options(null, site_options);
                 } else {
-                    rs.action.models.site_options.get_cache(_package_layout_options);
+                    rs.action.models.site_options.reload_cache(_package_layout_options);
                 }
 
 
